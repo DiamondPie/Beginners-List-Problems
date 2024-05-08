@@ -19,44 +19,19 @@ print([string for string in filter(lambda x: x[0].lower() == x[-1].lower(), stri
 # The `lambda x: x[0].lower() == x[-1].lower()`, which is a lambda expression, defines an anonymous function, which compares the beginning and the ending and outputs the result, in order to maximizly simplify the code
 
 ###################### I Like Pesto ######################
-# This method is quite complicated so I fully commented it, but it uses all lists without dictionary to solve this problem.
-# I prefer to use collections.Counter() method to solve this problem.
-
-foods = []
-for i in range(8):
-    ipt = input("What's your favourite food?\n>> ")
-    iptInFoods = False # Flag, True if the input option already in foods
-    for f in foods:
-        if ipt == f[0]: # The input is already in foods
-            f.append(ipt) # Add the food again to the list of this kind of food
-            iptInFoods = True
-            break
-    if not iptInFoods: # The input is a new element
-        foods.append([ipt]) # Add a list contains 1 of the food to the foodslist
-    
-times = 0 # most preformed time
-mostElements = [] # most time elements, I set a list here to include more than 1 element, i.e. [A, A, B, B, C] contains 2 As and 2 Bs, so A and B should both in mostElements list.
-unmostElements = [] # opposite from mostElements
-
-for f in foods:
-    if len(f) >= times: 
-        # most time elements
-        mostElements.append(f[0])
-        times = len(f)
+foodList = []
+count = 0
+for _ in range(8):
+    food = input("What's your favourite food?").lower()
+    if food == "pesto":
+        count += 1
     else:
-        # un-most time elements
-        unmostElements.append(f[0])
+        foodList.append(food)
 
-# print out the results
-for e in mostElements:
-    print(e, 'is loved by', times, "people!")
-    for _ in range(times):
-        print('I love', e)
-
-print('Other foods are:')
-for u in unmostElements:
-    print(u)
-
+print(count, "people love pesto")
+for _ in range(count):
+    print("I love pesto")
+    
 ###################### List of (good) Cereals ######################
 ipt = ""
 cerealList = []
